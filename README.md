@@ -6,22 +6,22 @@ Tools for building websites on top of Rails + MongoDB + Character
 
 ## Redactor (Slate license for $99)
 
-In characters ```admin.coffee```:
+Characters ```admin.coffee```:
 
     #= require redactor
 
-In characters ```admin.scss```:
+Characters ```admin.scss```:
 
     @import "admin/redactor";
 
 
 ## Nivo Slider
 
-In ```applictaion.coffee```:
+```applictaion.coffee```:
 
     #= require jquery.nivo.slider
 
-In ```application.scss```:
+```application.scss```:
 
     //= require nivo-slider
     //= require nivo-default
