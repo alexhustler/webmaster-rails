@@ -6,6 +6,9 @@ module Webmaster
 # NOTE: this might be handy
 #        app.config.assets.precompile += %w( vendor/modernizr.js )
       end
+      rake_tasks do
+        load "tasks/mongo/backup.rake"
+      end
     end
   end
 end
