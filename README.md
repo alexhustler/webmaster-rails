@@ -1,5 +1,5 @@
 Webmaster::Rails
-===============
+================
 
 Tools for building websites on top of Rails + MongoDB + Character
 
@@ -25,3 +25,20 @@ In ```application.scss```:
 
     //= require nivo-slider
     //= require nivo-default
+
+
+## Mongo Backup
+
+Backup database and upload it to S3 from Cloud66. Restore tool is included as well.
+
+Do backup:
+
+    rake mongo:backup
+
+List available backups:
+
+    rake mongo:list_backups
+
+Restore from FILE:
+
+    rake mongo:restore FILE=<filename.tag.gz>
