@@ -42,3 +42,8 @@ List available backups:
 Restore from FILE:
 
     rake mongo:restore FILE=<filename.tag.gz>
+
+
+## Photos
+
+Photos module with integrated admin and frontend helpers.
