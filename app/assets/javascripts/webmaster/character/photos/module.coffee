@@ -64,7 +64,7 @@
         console.log dateTime
 
     @headerView.ui.actionSave.on 'click', (e) =>
-      data.formData = { 'f': 'title,updated_ago,character_thumb_image' }
+      data.formData = { 'f': 'title,date,updated_ago,character_thumb_image' }
 
       # title
       titleAttrName = @ui.uploadInput.attr('name').replace('image', 'title')
