@@ -1,4 +1,6 @@
 #= require humanize
+#= require binaryajax
+#= require exif
 
 # ---------------------------------------------------------
 # PHOTOS
@@ -31,11 +33,11 @@
     $newFile.prependTo('#webmaster_photos')
 
     # image preview
-    reader  = new FileReader()
     canvas  = $canvasEl[0]
     canvas.width  = 58
     canvas.height = 58
     context = canvas.getContext('2d')
+    reader  = new FileReader()
     reader.onload = (e) ->
       $img = $('<img>', { src: e.target.result, style: 'visibility: hidden; position: absolute;' })
       $newFile.append($img)
@@ -48,14 +50,30 @@
       else # square
         ;
 
-      $img.load -> context.drawImage(@, x, y, width, height, 0, 0, 58, 58)
+      context.drawImage($img[0], x, y, width, height, 0, 0, 58, 58)
 
     reader.readAsDataURL(file)
 
+    # try to read date time of photo
+    dateTime = ''
+    EXIF.getData file, ->
+      dateTime = EXIF.getTag(@, 'DateTime')
+      if dateTime and dateTime != ''
+        # mongoid format of saving datetime object
+        dateTime = dateTime.replace(':', '-').replace(':', '-').replace(' ', 'T') + '+00:00' # default timezone
+        console.log dateTime
+
     @headerView.ui.actionSave.on 'click', (e) =>
       data.formData = { 'f': 'title,updated_ago,character_thumb_image' }
+
+      # title
       titleAttrName = @ui.uploadInput.attr('name').replace('image', 'title')
       data.formData[titleAttrName] = $titleEl.children('input:eq(0)').val()
+
+      # date
+      if dateTime and dateTime != ''
+        dateAttrName = @ui.uploadInput.attr('name').replace('image', 'date')
+        data.formData[dateAttrName] = dateTime
 
       data.submit().done (data, result) =>
         $newFile.remove()
@@ -92,6 +110,7 @@
 
   beforeOnClose: ->
     # TODO: gently clear the memory
+    # NOTE: fileupload not initialized after at least one file is selected
     #if @ui.uploadInput
     #  @ui.uploadInput.fileupload('destroy')
 

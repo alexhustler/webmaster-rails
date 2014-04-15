@@ -9,7 +9,7 @@ module Webmaster::PhotoBase
     # attibutes
     field :title, default: ''
     field :description, default: ''
-    field :date, type: Date, default: -> { Date.today }
+    field :date, type: DateTime, default: -> { DateTime.now }
 
     # uploaders
     mount_uploader :image, Webmaster::PhotoImageUploader
