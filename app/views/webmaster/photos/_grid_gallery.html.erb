@@ -1,0 +1,44 @@
+<div id='grid_gallery' class='grid-gallery'>
+
+  <section class='grid-wrap'>
+    <ul class='grid'>
+
+      <li class='grid-sizer'></li><!-- for Masonry column width -->
+
+      <% objects.each do |p| %>
+        <li>
+          <figure>
+            <%= image_tag p.image.grid.url, alt: p.title %>
+            <figcaption>
+              <header><%= p.title %></header>
+              <%= p.description.html_safe %>
+            </figcaption>
+          </figure>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class='slideshow'>
+    <ul>
+      <% objects.each do |p| %>
+      <li>
+        <figure>
+          <%= image_tag p.image.large.url, alt: p.title %>
+          <figcaption>
+            <header><%= p.title %></header>
+            <%= p.description.html_safe %>
+          </figcaption>
+        </figure>
+      </li>
+      <% end %>
+    </ul>
+
+    <nav>
+      <span class='nav-prev'></span>
+      <span class='nav-next'></span>
+      <span class='nav-close'></span>
+    </nav>
+  </section>
+
+</div>

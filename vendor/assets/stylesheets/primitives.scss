@@ -1,0 +1,83 @@
+
+// Arrows
+
+@mixin primitive-arrow($color, $hover_color, $size, $weight)
+                                      {
+  &:before                            { display: block;
+                                        width: $size;
+                                        height: $size;
+                                        border: $weight solid $color;
+                                        cursor: pointer;
+                                        content: '';
+
+                                        -webkit-transform: rotate(45deg);
+                                        -moz-transform: rotate(45deg);
+                                        -o-transform: rotate(45deg);
+                                        -ms-transform: rotate(45deg);
+                                        transform: rotate(45deg);
+  }
+  &:hover                             {
+    &:before                          { border-color: $hover_color;
+    }
+  }
+}
+
+@mixin primitive-arrow-left($color, $hover_color, $size, $weight)
+                                      { @include primitive-arrow($color, $hover_color, $size, $weight);
+  &:before                            { border-right: none;
+                                        border-top: none;
+  }
+}
+
+@mixin primitive-arrow-right($color, $hover_color, $size, $weight)
+                                      { @include primitive-arrow($color, $hover_color, $size, $weight);
+  &:before                            { border-left: none;
+                                        border-bottom: none;
+  }
+}
+
+@mixin primitive-arrow-top($color, $hover_color, $size, $weight)
+                                      { @include primitive-arrow($color, $hover_color, $size, $weight);
+  &:before                            { border-right: none;
+                                        border-bottom: none;
+  }
+}
+
+@mixin primitive-arrow-bottom($color, $hover_color, $size, $weight)
+                                      { @include primitive-arrow($color, $hover_color, $size, $weight);
+  &:before                            { border-left: none;
+                                        border-top: none;
+  }
+}
+
+// Multiply
+
+@mixin primitive-multiply($color, $hover_color, $size, $weight, $offset_left, $offset_right) {
+  &:after, &:before                   { display: block;
+                                        width: $size;
+                                        height: $size;
+                                        border: $weight solid $color;
+                                        cursor: pointer;
+                                        content: '';
+                                        position: relative;
+
+                                        -webkit-transform: rotate(45deg);
+                                        -moz-transform: rotate(45deg);
+                                        -o-transform: rotate(45deg);
+                                        -ms-transform: rotate(45deg);
+                                        transform: rotate(45deg);
+  }
+  &:hover                             {
+    &:after, &:before                 { border-color: $hover_color;
+    }
+  }
+  &:after                             { border-left: none;
+                                        border-bottom: none;
+                                        margin-top: -($size + $weight);
+                                        left: -($size - $weight + $offset_left);
+  }
+  &:before                            { border-right: none;
+                                        border-top: none;
+                                        right: -($size - $weight + $offset_right);
+  }
+}
