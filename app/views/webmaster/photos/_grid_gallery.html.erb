@@ -10,7 +10,7 @@
           <figure>
             <%= image_tag p.image.grid.url, alt: p.title %>
             <figcaption>
-              <header><%= p.title %></header>
+              <% if not p.title.empty? %><header><%= p.title %></header><% end %>
               <%= p.description.html_safe %>
             </figcaption>
           </figure>
@@ -25,10 +25,10 @@
       <li>
         <figure>
           <%= image_tag p.image.large.url, alt: p.title %>
-          <figcaption>
-            <header><%= p.title %></header>
+<!--      <figcaption>
+            <% if not p.title.empty? %><header><%= p.title %></header><% end %>
             <%= p.description.html_safe %>
-          </figcaption>
+          </figcaption> -->
         </figure>
       </li>
       <% end %>
