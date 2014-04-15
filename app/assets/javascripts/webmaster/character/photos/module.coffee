@@ -107,7 +107,9 @@ chr.photosModule = (name='Photo', opts={}) ->
       titleField:   'title'
       metaField:    'updated_ago'
       thumbField:   'character_thumb_image'
-
+    listScopes:
+      default:
+        orderBy:    'date:desc'
   options = _.extend(options, opts)
 
   chr.genericModule name, options

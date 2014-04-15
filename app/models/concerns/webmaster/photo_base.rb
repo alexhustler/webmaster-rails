@@ -8,11 +8,14 @@ module Webmaster::PhotoBase
 
     # attibutes
     field :title, default: ''
-    field :description
+    field :description, default: ''
     field :date, type: Date, default: -> { Date.today }
 
     # uploaders
     mount_uploader :image, Webmaster::PhotoImageUploader
+
+    # scopes
+    default_scope -> { desc(:date) }
 
     def character_thumb_image
       image.small.url
