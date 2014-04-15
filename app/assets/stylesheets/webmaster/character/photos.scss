@@ -1,0 +1,63 @@
+
+.webmaster-photos-uploader            { max-width: 700px;
+                                        margin: 0 auto;
+                                        padding: 60px;
+
+  .button input                       { @include position(0px, 0px, auto, auto);
+                                        width: 156px;
+                                        height: 34px;
+                                        cursor: pointer;
+                                        padding-left: 120px;
+  }
+  .button                             { background: transparent;
+                                        text-align: center;
+                                        color: #9ca1ab;
+                                        font-size: 12px;
+                                        font-weight: $font_semi_bold;
+                                        border: 2px solid #e6e9f0;
+                                        border-radius: 4px;
+                                        width: 120px;
+                                        padding: 6px 0;
+                                        @include no-focus-border;
+                                        cursor: pointer;
+                                        position: relative;
+                                        overflow: hidden;
+    &.disabled                        { background-color: #e6e9f0;
+    }
+
+    &:not(.disabled):hover            { color: $secondary_color;
+                                        border-color: $secondary_color;
+    }
+  }
+}
+
+.webmaster-photo                      { background-color: #fafbfc;
+                                        margin-bottom: 20px;
+                                        padding: 20px 25px;
+                                        border: 1px solid #d1d6e0;
+  input[type=text]                    { margin-bottom: 7px;
+                                        background: transparent;
+                                        border: none;
+                                        box-shadow: none;
+                                        padding: 0 0 3px 0;
+                                        font-weight: $font_bold;
+                                        font-size: 14px;
+                                        border-bottom: 1px dashed $list_border_color;
+    &:focus                           { border-bottom: 1px dashed $list_border_color;
+    }
+  }
+  .size                               { float: right;
+  }
+  canvas                              { position: absolute;
+                                        border-radius: 4px;
+                                        margin: -5px 0 0 -5px;
+                                        background-color: #fff;
+  }
+  .string                             { margin-left: 65px;
+  }
+  .meta                               { margin-left: 65px;
+  }
+}
+
+.webmaster-photos                     { margin-top: 20px;
+}

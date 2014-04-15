@@ -1,8 +1,7 @@
 <div class='chr-form-small'>
-  <%= simple_form_for @object, url: @form_action_url, method: :post do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description, as: :text, input_html: { class: 'character-redactor' } %>
-    <%= f.input :date %>
-    <%= f.input :image %>
+  <% if @object.persisted? %>
+    <%= render partial: 'character/webmaster/photos/edit' %>
+  <% else %>
+    <%= render partial: 'character/webmaster/photos/new' %>
   <% end %>
 </div>

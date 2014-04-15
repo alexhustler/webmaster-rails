@@ -10,7 +10,7 @@ class Webmaster::PhotoImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    asset_path("assets/fallback/" + [version_name, "webmaster_photo_image.jpg"].compact.join('_'))
+    asset_path("assets/fallback/" + [version_name, "webmaster_photo_image.png"].compact.join('_'))
   end
 
   version :small do

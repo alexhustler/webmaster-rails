@@ -7,7 +7,7 @@ module Webmaster::PhotoBase
     include UpdatedAgo
 
     # attibutes
-    field :title
+    field :title, default: ''
     field :description
     field :date, type: Date, default: -> { Date.today }
 

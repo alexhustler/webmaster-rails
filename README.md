@@ -47,3 +47,17 @@ Restore from FILE:
 ## Photos
 
 Photos module with integrated admin and frontend helpers.
+
+In characters ```admin.coffee```:
+
+    #= require webmaster/character
+
+    # Webmasters default Photo model
+    chr.photosModule('Photo')
+    # OR
+    # Custom model name
+    chr.photosModule('Photo', { modelName: 'CustomPhoto' })
+
+In characters ```admin.scss```:
+
+    @import "webmaster/character";
