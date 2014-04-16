@@ -113,8 +113,8 @@
     var self = this;
 
     // close slide show on overlay click
-    this.slideshow.addEventListener('click', function (e) {
-      if (e.toElement.tagName === 'UL') { self._closeSlideshow(); }
+    $(this.slideshow).on('click', function (e) {
+      if (e.target.tagName === 'UL') { self._closeSlideshow(); }
     });
 
     // open the slideshow when clicking on the main grid items
@@ -122,12 +122,6 @@
       var idx = $(self.grid).children('li').index($(e.currentTarget));
       self._openSlideshow( idx - 1 );
     });
-
-    // this.gridItems.forEach( function( item, idx ) {
-    //   item.addEventListener( 'click', function() {
-    //     self._openSlideshow( idx );
-    //   } );
-    // } );
 
     // slideshow controls
     this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );
