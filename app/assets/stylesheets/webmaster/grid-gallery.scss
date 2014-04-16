@@ -1,4 +1,4 @@
-@import "primitives";
+@import "webmaster/primitives";
 
 .grid-gallery-spin                    { width: 100%;
                                         padding: 30px 0;
@@ -31,6 +31,7 @@
     li                                { width: 25%;
                                         float: left;
                                         cursor: pointer;
+                                        margin-bottom: 0;
       &:hover figure                  { opacity: 0.7;
       }
     }
@@ -68,7 +69,7 @@
   }
   span.nav-next                       { @include primitive-arrow-right(#3a4246, #0072bc, 24px, 8px);
   }
-  span.nav-close                      { @include primitive-multiply(#31373a, #eee , 12px, 4px, 0px, 1px);
+  span.nav-close                      { @include primitive-multiply(#31373a, #eee , 13px, 4px);
   }
 
   /* Slideshow */

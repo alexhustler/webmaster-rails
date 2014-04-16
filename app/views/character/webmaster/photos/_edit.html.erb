@@ -1,7 +1,6 @@
 <%= simple_form_for @object, url: @form_action_url, method: :post do |f| %>
   <%= f.input :title %>
   <%= image_tag @object.image.large.url, style: 'width: 100%; margin-bottom: 20px;' %>
-  <%= f.input :description, as: :text, input_html: { class: 'character-redactor' } %>
   <%= f.input :date %>
   <%= f.input :image, label: 'Replace Image' %>
 <% end %>

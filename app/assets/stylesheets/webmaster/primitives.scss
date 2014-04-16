@@ -52,7 +52,7 @@
 
 // Multiply
 
-@mixin primitive-multiply($color, $hover_color, $size, $weight, $offset_left, $offset_right) {
+@mixin primitive-multiply($color, $hover_color, $size, $weight) {
   &:after, &:before                   { display: block;
                                         width: $size;
                                         height: $size;
@@ -66,6 +66,7 @@
                                         -o-transform: rotate(45deg);
                                         -ms-transform: rotate(45deg);
                                         transform: rotate(45deg);
+                                        -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   }
   &:hover                             {
     &:after, &:before                 { border-color: $hover_color;
@@ -73,73 +74,11 @@
   }
   &:after                             { border-left: none;
                                         border-bottom: none;
-                                        margin-top: -($size + $weight);
-                                        left: -($size - $weight + $offset_left);
+                                        margin-top: -$size;
+                                        left: -(($size - $weight) / 1.414213562);
   }
   &:before                            { border-right: none;
                                         border-top: none;
-                                        right: -($size - $weight + $offset_right);
+                                        right: -(($size - $weight) / 1.414213562);
   }
-}
-
-/**
- * (C)Leanest CSS spinner ever
- * http://lea.verou.me/2013/11/cleanest-css-spinner-ever/
- */
-
-@keyframes spin { to { transform: rotate(1turn); } }
-
-.progress {
-  position: relative;
-  display: inline-block;
-  width: 5em;
-  height: 5em;
-  margin: 0 .5em;
-  font-size: 12px;
-  text-indent: 999em;
-  overflow: hidden;
-  animation: spin 1s infinite steps(8);
-}
-
-.small.progress {
-  font-size: 6px;
-}
-
-.large.progress {
-  font-size: 24px;
-}
-
-.progress:before,
-.progress:after,
-.progress > div:before,
-.progress > div:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 2.25em; /* (container width - part width)/2  */
-  width: .5em;
-  height: 1.5em;
-  border-radius: .2em;
-  background: #eee;
-  box-shadow: 0 3.5em #eee; /* container height - part height */
-  transform-origin: 50% 2.5em; /* container height / 2 */
-}
-
-.progress:before {
-  background: #555;
-}
-
-.progress:after {
-  transform: rotate(-45deg);
-  background: #777;
-}
-
-.progress > div:before {
-  transform: rotate(-90deg);
-  background: #999;
-}
-
-.progress > div:after {
-  transform: rotate(-135deg);
-  background: #bbb;
 }

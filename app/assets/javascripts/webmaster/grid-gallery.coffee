@@ -30,7 +30,7 @@ window.CBPGridGallery.prototype._initInfiniteScroll = ->
     corners: 1            # Corner roundness (0..1)
     rotate: 0             # The rotation offset
     direction: 1          # 1: clockwise, -1: counterclockwise
-    color: '#3a4246'         # #rgb or #rrggbb or array of colors
+    color: '#3a4246'      # #rgb or #rrggbb or array of colors
     speed: 1              # Rounds per second
     trail: 20             # Afterglow percentage
     shadow: false         # Whether to render a shadow
@@ -48,8 +48,10 @@ window.CBPGridGallery.prototype._initInfiniteScroll = ->
   @nextPageNumber  = 2
 
   loadMorePhotos = =>
-    nearToBottom = 200
-    bottomReached = $(window).scrollTop() + $(window).height() > $(document).height() - nearToBottom
+    gridBottom    = $(@grid).outerHeight() + $(@grid).position().top
+    nearToBottom  = 200
+    bottomReached = $(window).scrollTop() + $(window).height() > gridBottom - nearToBottom
+
     if bottomReached and not @lastPageReached
       @$spinTarget.css({ visibility: 'visible' })
       $.ajax
