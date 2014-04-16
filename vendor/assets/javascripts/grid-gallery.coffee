@@ -7,15 +7,19 @@ window.CBPGridGallery.prototype._addPhotos = (gridElements, slideshowElements) -
   $(@grid).append(gridElements)
   $(@slideshow).append(slideshowElements)
 
+  # update counters and lists
+  @gridItems      = [].slice.call( this.grid.querySelectorAll( 'li:not(.grid-sizer)' ) )
+  @itemsCount     = this.gridItems.length
+  @slideshow      = this.el.querySelector( 'section.slideshow > ul' )
+  @slideshowItems = [].slice.call( this.slideshow.children )
+
+  # reload masonry
   @msnry.reloadItems()
 
   imgLoad = imagesLoaded(@grid)
   imgLoad.on 'progress', => @msnry.layout()
 
-  # update slideshow items
-  @slideshowItems = [].slice.call( @slideshow.children )
-  imagesLoaded @slideshow, =>
-    @_resizeSlideshowItems()
+  imagesLoaded @slideshow, => @_resizeSlideshowItems()
 
 window.CBPGridGallery.prototype._initInfiniteScroll = ->
   spinOpts =
