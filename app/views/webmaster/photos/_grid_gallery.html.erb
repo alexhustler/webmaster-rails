@@ -9,10 +9,9 @@
         <li>
           <figure>
             <%= image_tag p.image.grid.url, alt: p.title %>
-            <figcaption>
-              <% if not p.title.empty? %><header><%= p.title %></header><% end %>
-              <%= p.description.html_safe %>
-            </figcaption>
+            <% if not p.title.empty? %>
+            <figcaption><%= p.title %></figcaption>
+            <% end %>
           </figure>
         </li>
       <% end %>
@@ -25,10 +24,9 @@
       <li>
         <figure>
           <%= image_tag p.image.large.url, alt: p.title %>
-<!--      <figcaption>
-            <% if not p.title.empty? %><header><%= p.title %></header><% end %>
-            <%= p.description.html_safe %>
-          </figcaption> -->
+          <% if not p.title.empty? %>
+          <figcaption><%= p.title %></figcaption>
+          <% end %>
         </figure>
       </li>
       <% end %>

@@ -8,7 +8,6 @@ module Webmaster::PhotoBase
 
     # attibutes
     field :title, default: ''
-    field :description, default: ''
     field :date, type: DateTime, default: -> { DateTime.now }
 
     # uploaders
