@@ -1,5 +1,5 @@
-//= require masonry
-//= require imagesloaded
+//= require desandro/masonry
+//= require desandro/imagesloaded
 //= require classie
 //= require_self
 
@@ -90,16 +90,23 @@
     this._initEvents();
     // init slideshow
     this._initSlideshow();
+    // init infinite scroll
+    this._initInfiniteScroll();
   };
 
   CBPGridGallery.prototype._initMasonry = function() {
     var grid = this.grid;
-    imagesLoaded( grid, function() {
-      new Masonry( grid, {
-        itemSelector: 'li',
-        columnWidth: grid.querySelector( '.grid-sizer' )
-      });
+
+    var msnry = new Masonry( grid, {
+      itemSelector: 'li',
+      columnWidth: grid.querySelector( '.grid-sizer' ),
+      transitionDuration: 0
     });
+
+    var imgLoad = imagesLoaded(grid);
+    imgLoad.on('progress', function() { msnry.layout() });
+
+    this.msnry = msnry;
   };
 
   CBPGridGallery.prototype._initEvents = function() {
@@ -111,11 +118,16 @@
     });
 
     // open the slideshow when clicking on the main grid items
-    this.gridItems.forEach( function( item, idx ) {
-      item.addEventListener( 'click', function() {
-        self._openSlideshow( idx );
-      } );
-    } );
+    $(document).on('click', '#grid_gallery .grid li', function (e) {
+      var idx = $(self.grid).children('li').index($(e.currentTarget));
+      self._openSlideshow( idx - 1 );
+    });
+
+    // this.gridItems.forEach( function( item, idx ) {
+    //   item.addEventListener( 'click', function() {
+    //     self._openSlideshow( idx );
+    //   } );
+    // } );
 
     // slideshow controls
     this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );

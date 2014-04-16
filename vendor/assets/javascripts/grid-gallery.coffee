@@ -1,9 +1,73 @@
 #= require _grid-gallery
+#= require spin
 #= require jquery
+#= require underscore
+
+window.CBPGridGallery.prototype._addPhotos = (gridElements, slideshowElements) ->
+  $(@grid).append(gridElements)
+  $(@slideshow).append(slideshowElements)
+
+  @msnry.reloadItems()
+
+  imgLoad = imagesLoaded(@grid)
+  imgLoad.on 'progress', => @msnry.layout()
+
+  # update slideshow items
+  @slideshowItems = [].slice.call( @slideshow.children )
+  imagesLoaded @slideshow, =>
+    @_resizeSlideshowItems()
+
+window.CBPGridGallery.prototype._initInfiniteScroll = ->
+  spinOpts =
+    lines: 7              # The number of lines to draw
+    length: 0             # The length of each line
+    width: 12             # The line thickness
+    radius: 15            # The radius of the inner circle
+    corners: 1            # Corner roundness (0..1)
+    rotate: 0             # The rotation offset
+    direction: 1          # 1: clockwise, -1: counterclockwise
+    color: '#3a4246'         # #rgb or #rrggbb or array of colors
+    speed: 1              # Rounds per second
+    trail: 20             # Afterglow percentage
+    shadow: false         # Whether to render a shadow
+    hwaccel: false        # Whether to use hardware acceleration
+    className: 'spinner'  # The CSS class to assign to the spinner
+    zIndex: 2e9           # The z-index (defaults to 2000000000)
+    top: 'auto'           # Top position relative to parent in px
+    left: '50%'           # Left position relative to parent in px
+
+  spinTarget  = document.getElementById('grid_gallery_spin')
+  @$spinTarget = $(spinTarget)
+  @spinner    = new Spinner(spinOpts).spin(spinTarget)
+
+  @lastPageReached = false
+  @nextPageNumber  = 2
+
+  loadMorePhotos = =>
+    nearToBottom = 200
+    bottomReached = $(window).scrollTop() + $(window).height() > $(document).height() - nearToBottom
+    if bottomReached and not @lastPageReached
+      @$spinTarget.css({ visibility: 'visible' })
+      $.ajax
+        url: "#{ window.location.pathname }/#{ @nextPageNumber }"
+        success: (response) =>
+          @nextPageNumber += 1
+          @$spinTarget.css({ visibility: 'hidden' })
+          gridElements      = $(response).find('ul.grid li').not('.grid-sizer')
+          slideshowElements = $(response).find('.slideshow ul li')
+
+          if gridElements.length == 0
+            @lastPageReached = true
+          else
+            @_addPhotos(gridElements, slideshowElements)
+
+  $(window).scroll _.throttle(loadMorePhotos, 500)
+
 
 window.CBPGridGallery.prototype._initSlideshow = ->
   imagesLoaded @slideshow, =>
     @_resizeSlideshowItems()
+
 
 window.CBPGridGallery.prototype._resizeSlideshowItems = ->
   minMargin    = 40

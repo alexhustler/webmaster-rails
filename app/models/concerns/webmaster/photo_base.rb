@@ -16,6 +16,9 @@ module Webmaster::PhotoBase
     # scopes
     default_scope -> { desc(:date) }
 
+    # pagination
+    paginates_per 20
+
     def character_thumb_image
       image.small.url
     end

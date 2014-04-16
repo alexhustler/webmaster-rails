@@ -48,7 +48,7 @@ Restore from FILE:
 
 Photos module with integrated admin and frontend helpers.
 
-In characters ```admin.coffee```:
+Characters javascrip ```admin.coffee```:
 
     #= require webmaster/character
 
@@ -58,6 +58,38 @@ In characters ```admin.coffee```:
     # Custom model name
     chr.photosModule('Photo', { modelName: 'CustomPhoto' })
 
-In characters ```admin.scss```:
+Character styles ```admin.scss```:
 
     @import "webmaster/character";
+
+Styles ```application.scss```:
+
+    @import "grid-gallery";
+
+Javascript ```application.coffee```:
+
+    #= require grid-gallery
+
+    $ ->
+      new CBPGridGallery( document.getElementById( 'grid_gallery' ) )
+
+    document.addEventListener "page:load", ->
+      new CBPGridGallery( document.getElementById( 'grid_gallery' ) )
+
+Controller ```app/controllers/photos_controller.rb```:
+
+    class PhotosController < ApplicationController
+      def index
+        @photos = Photo.page(1)
+      end
+
+      def page
+        @photos = Photo.page(params[:page])
+        render layout: false
+      end
+    end
+
+Routes ```config/routes.rb```:
+
+    get 'photos'       => 'photos#index'
+    get 'photos/:page' => 'photos#page'
