@@ -93,3 +93,6 @@ Routes ```config/routes.rb```:
 
     get 'photos'       => 'photos#index'
     get 'photos/:page' => 'photos#page'
+
+
+## Messages
