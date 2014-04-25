@@ -16,6 +16,9 @@ namespace :mongo do
 
   desc "Backup database and upload to S3 bucket"
   task :backup => :environment do
+    # TODO: check if mongodump command is installed on a server
+    # sudo apt-get install mongodb-clients
+
     uri, db_name = parse_uri()
     filename     = Time.now.strftime("%Y-%m-%d_%H-%M-%S.tar.gz")
     backup_cmd   = "mongodump -u #{uri.user} -p #{uri.password} -h #{uri.host}:#{uri.port} -d #{db_name}"
@@ -76,6 +79,7 @@ namespace :mongo do
       db_name    = ENV['MONGODB_URI'].split('/').last
       return uri, db_name
     else
+      # TODO: check localhost option
       puts "ENV['MONGODB_URL'] or ENV['MONGODB_URI'] has to be defined."
       exit
     end
