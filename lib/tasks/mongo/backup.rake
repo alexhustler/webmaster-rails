@@ -84,4 +84,13 @@ namespace :mongo do
       exit
     end
   end
+  # TODO:
+  # 1. Get mongo database uri from c66 via API or toolbelt (if possible or clone and make a feature)
+  # 2. Check if possible to use with mongodump
+  # 3. Parse uri and pass values to mongodump command if not possible usage of uri with mongodump
+  # 4. Execute all backup commands with proper values
+
+  #"""mongodump -u admin -p '' -h ds029120-a0.mongolab.com:29120 -d wta
+  #   mongo wta --eval "db.dropDatabase()"
+  #   mongorestore dump/wta"""
 end
