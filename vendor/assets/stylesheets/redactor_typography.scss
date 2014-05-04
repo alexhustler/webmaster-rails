@@ -1,0 +1,89 @@
+/*
+  TYPOGRAPHY
+*/
+.redactor_editor object,
+.redactor_editor embed,
+.redactor_editor video,
+.redactor_editor img {
+  max-width: 100%;
+  width: auto;
+}
+.redactor_editor video,
+.redactor_editor img {
+  height: auto;
+}
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre {
+  margin: 0;
+  margin-bottom: 10px !important;
+  border: none;
+  background: none !important;
+  box-shadow: none !important;
+}
+.redactor_editor iframe,
+.redactor_editor object,
+.redactor_editor hr {
+  margin-bottom: 15px !important;
+}
+.redactor_editor blockquote {
+  margin-left: 1.5em !important;
+  padding-left: 0 !important;
+  color: #777;
+  font-style: italic !important;
+}
+.redactor_editor ul,
+.redactor_editor ol {
+  padding-left: 2em !important;
+}
+.redactor_editor ul ul,
+.redactor_editor ol ol,
+.redactor_editor ul ol,
+.redactor_editor ol ul {
+  margin: 2px !important;
+  padding: 0 !important;
+  padding-left: 2em !important;
+  border: none;
+}
+.redactor_editor dl dt {
+  font-weight: bold;
+}
+.redactor_editor dd {
+  margin-left: 1em;
+}
+.redactor_editor table {
+  border-collapse: collapse;
+  font-size: 1em !important;
+}
+.redactor_editor table td {
+  padding: 5px !important;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+.redactor_editor table thead td {
+  border-bottom: 2px solid #000 !important;
+  font-weight: bold !important;
+}
+.redactor_editor code {
+  background-color: #d8d7d7 !important;
+}
+.redactor_editor pre {
+  overflow: auto;
+  padding: 1em !important;
+  border: 1px solid #ddd !important;
+  border-radius: 3px !important;
+  background: #f8f8f8 !important;
+  white-space: pre;
+  font-size: 90% !important;
+}
+.redactor_editor hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
