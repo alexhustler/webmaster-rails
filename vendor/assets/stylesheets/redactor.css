@@ -125,90 +125,9 @@ body .redactor_box_fullscreen {
 .redactor_editor:focus {
   outline: none;
 }
-.redactor_editor div,
-.redactor_editor p,
-.redactor_editor ul,
-.redactor_editor ol,
-.redactor_editor table,
-.redactor_editor dl,
-.redactor_editor blockquote,
-.redactor_editor pre,
-.redactor_editor h1,
-.redactor_editor h2,
-.redactor_editor h3,
-.redactor_editor h4,
-.redactor_editor h5,
-.redactor_editor h6 {
-  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
-}
-.redactor_editor code,
-.redactor_editor pre {
-  font-family: Menlo, Monaco, monospace, sans-serif;
-}
-.redactor_editor div,
-.redactor_editor p,
-.redactor_editor ul,
-.redactor_editor ol,
-.redactor_editor table,
-.redactor_editor dl,
-.redactor_editor blockquote,
-.redactor_editor pre {
-  font-size: 14px;
-  line-height: 1.6em;
-}
-.redactor_editor a {
-  color: #15c !important;
-  text-decoration: underline !important;
-}
 .redactor_editor .redactor_placeholder {
   color: #999 !important;
   display: block !important;
-}
-/*
-	HEADERS
-*/
-.redactor_editor h1,
-.redactor_editor h2,
-.redactor_editor h3,
-.redactor_editor h4,
-.redactor_editor h5,
-.redactor_editor h6 {
-  margin-top: 0 !important;
-  padding: 0 !important;
-  background: none;
-  color: #000;
-  font-weight: bold;
-}
-.redactor_editor h1 {
-  font-size: 36px !important;
-  line-height: 1.111em !important;
-  margin-bottom: .15em !important;
-}
-.redactor_editor h2 {
-  font-size: 30px !important;
-  line-height: 1.111em !important;
-  margin-bottom: .25em !important;
-}
-.redactor_editor h3 {
-  font-size: 24px !important;
-  line-height: 1.333em !important;
-  margin-bottom: .2em !important;
-}
-.redactor_editor h4 {
-  font-size: 18px !important;
-  line-height: 1.5em !important;
-  margin-bottom: .2em !important;
-}
-.redactor_editor h5 {
-  font-size: 1em !important;
-  line-height: 1.6em !important;
-  margin-bottom: .25em !important;
-}
-.redactor_editor h6 {
-  font-size: .8em !important;
-  line-height: 1.6em !important;
-  text-transform: uppercase;
-  margin-bottom: .3em !important;
 }
 /*
 	TOOLBAR

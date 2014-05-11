@@ -14,7 +14,7 @@ In characters ```admin.coffee```:
 
 In characters ```admin.scss```:
 
-    @import "admin/redactor";
+    @import "redactor";
 
 This makes redactor to be used in **pages**, **posts** apps and **settings** which values are set to be ```html```.
 
